@@ -21,7 +21,13 @@ body {
     overflow-x: hidden;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
-
+.h1{
+    /* font-size: large;
+    display: flex 5px;
+    justify-content: center 5px;
+    align-items: center 5px; */
+    margin-left: 20em;
+}
 .container {
     width: 95%;
     max-width: 1400px;
@@ -259,9 +265,18 @@ h1:hover {
     .skills {
         justify-content: center;
     }
+    .h1 {
+        flex-wrap: wrap;
+        margin-left: 10em;
+    }
 }
 
 @media (max-width: 360px) {
+    .h1 {
+        display: flex;
+        align-items: center;
+        margin-left: 10em;
+    }
     .profile-image {
         min-width: 240px;
     }
@@ -293,15 +308,20 @@ h1:hover {
 }    </style>
 </head>
 <body>
+    <div class="h1">
+        <strong>
+            <h1>About Me :</h1>
+        </strong>
+    </div>
     <div class="container">
         <div class="profile-section">
             <div class="profile-image">
                 <img src="https://media.istockphoto.com/id/516141885/photo/businesswear.jpg?s=2048x2048&w=is&k=20&c=du_Utxsa7fOHoXadt8kWqeEQm5stFHcrAh6nPuvtVsw=" alt="Muhib Khan">
             </div>
             <div class="profile-content">
-                <h1>Muhib Khan</h1>
+                <h1>M.Muhib Khan</h1>
                 <div class="bio">
-                    <p>Hello! I'm a passionate web developer with over 5 years of experience in creating beautiful and functional websites. I specialize in front-end development and have a keen eye for design.</p>
+                    <p>Hello! I'm a passionate web developer with over 2 years of experience in creating beautiful and functional websites. I specialize in front-end development and have a keen eye for design.</p>
                     <p>When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or sharing my knowledge through technical blog posts.</p>
                 </div>
                 <div class="skills">
@@ -311,12 +331,13 @@ h1:hover {
                     <span class="skill-tag">React</span>
                     <span class="skill-tag">Node.js</span>
                     <span class="skill-tag">UI/UX Design</span>
+                    <span class="skill-tag">Python</span>
                 </div>
                 <div class="contact-info">
                     <h2>Contact Information</h2>
                     <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <span>muhib.khan@example.com</span>
+                        <i class="fas fa-envelope"></i><a href="http://gmail.com">
+                        <span>muhibkhan2410@gmail.com</span> </a>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-phone"></i>
@@ -324,7 +345,7 @@ h1:hover {
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-location-dot"></i>
-                        <span>Pakistan Karachi, Malir</span>
+                        <span>Pakistan Karachi, Malir 16</span>
                     </div>
                 </div>
             </div>
@@ -336,8 +357,8 @@ h1:hover {
         <div class="education">
             <h2>Education</h2>
             <div class="education-item">
-                <h3>Bachelor of Computer Science</h3>
-                <p>University of Karachi, Pakistan — Graduated in 2034</p>
+                <h3> Computer Science</h3>
+                <p>The Orchid School - Grade 9</p>
                 <span>Major: Computer Science | Minor: Web Development</span>
             </div>
         </div>
