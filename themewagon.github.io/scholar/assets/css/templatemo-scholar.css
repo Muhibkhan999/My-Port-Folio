@@ -700,25 +700,53 @@ Header Style
   height: 80px;
   line-height: 80px;
 }
+  .header-area .main-nav .nav li:hover a {
+    opacity: 0.98;
+    transform: translateY(-4px) scale(1.02);
+    transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    animation: navHover 0.3s ease-in-out;
+  }
 
-.header-area .main-nav .nav li:hover a {
-  opacity: 0.8;
-}
-.header-area .main-nav .nav li a.active {
-  color: #fff;
-  background-color: rgba(255, 255, 255, 0.10);
-  opacity: 1;
-}
+  .header-area .main-nav .nav li a.active {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.25);
+    opacity: 1;
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.25);
+    transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
 
 .background-header .main-nav .nav li:hover a {
-  opacity: 0.8;
-}
-.background-header .main-nav .nav li a.active {
-  color: #fff;
-  background-color: rgba(255, 255, 255, 0.10);
-  opacity: 1;
+  opacity: 0.9;
+  transform: translateY(-3px);
+  transition: all 0.4s ease;
+  box-shadow: 0 6px 15px rgba(255, 255, 255, 0.15);
 }
 
+.background-header .main-nav .nav li a.active {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.15);
+  opacity: 1;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@keyframes navHover {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-5px) scale(1.03);
+  }
+  100% {
+    transform: translateY(-4px) scale(1.02);
+  }
+}
 .header-area .main-nav .menu-trigger {
   cursor: pointer;
   position: absolute;
@@ -1201,6 +1229,9 @@ About Style
   content: '';
   border-top-left-radius: 500px;
   border-bottom-left-radius: 500px;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  opacity: 0.95;
 }
 
 .accordion {
@@ -1209,6 +1240,8 @@ About Style
   background-color: #7a6ad8;
   border-radius: 40px;
   padding: 80px 50px 50px 50px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease-in-out;
 }
 
 .accordion-item {
@@ -1216,6 +1249,12 @@ About Style
   border-radius: 40px !important;
   margin-bottom: 30px;
   border: none;
+  box-shadow: 0 3px 10px rgba(122, 106, 216, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.accordion-item:hover {
+  transform: translateY(-3px);
 }
 
 .accordion-item .accordion-button {
@@ -1231,11 +1270,17 @@ About Style
 
 h2.accordion-header button {
   padding: 15px 25px;
-  font-family: 'Poppins';
+  font-family: 'Poppins', sans-serif;
   font-size: 16px;
   font-weight: 600;
+  color: #333;
+  transition: all 0.3s ease;
+  background: transparent;
+  width: 100%;
+  text-align: left;
+  position: relative;
+  cursor: pointer;
 }
-
 .accordion-button::after {
   font-size: 18px;
   font-weight: 500;
@@ -1393,39 +1438,15 @@ Courses Style
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
   }
-
-
-
-
-
-
   .events_item .thumb img {
     margin-bottom: -5px;
     width: 100%;
     height: auto;
     transition: transform 0.3s ease;
   }
-
-
-
-
   .events_item .thumb:hover img {
     transform: scale(1.05);
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   .events_item .thumb span.category {
     position: absolute;
     left: 30px;
@@ -1441,31 +1462,10 @@ Courses Style
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
   }
-
-
-
-
-
-
-
-
-
-
-
-
   .events_item .thumb span.category:hover {
     background-color: #7a6ad8;
     color: #fff;
   }
-
-
-
-
-
-
-
-
-
   .events_item .thumb span.price {
     position: absolute;
     right: -30px;
@@ -1478,13 +1478,6 @@ Courses Style
     transition: all .3s;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   }
-
-
-
-
-
-
-
   .events_item .thumb span.price h6 {
     margin-top: 72px;
     margin-left: 22px;
@@ -1494,25 +1487,12 @@ Courses Style
     font-weight: 700;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
   }
-
-
-
-
-
-
-
-
-
   .events_item .thumb span.price em {
     font-size: 18px;
     font-weight: 500;
     font-style: normal;
     vertical-align: top;
   }
-
-
-
-
   .events_item {
     background-color: #f1f0fe;
     border-radius: 25px;
@@ -1523,30 +1503,13 @@ Courses Style
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
   } 
-
-
-
-
-
-
-
   .events_item:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
   }
-
-
-
-
-
-
   .events_item .down-content {
     padding: 20px 30px 25px 30px;
   }
-
-
-
-
   .events_item .down-content span.author {
     color: #7a6ad8;
     font-size: 15px;
@@ -1554,29 +1517,21 @@ Courses Style
     margin-bottom: 6px;
     transition: color 0.3s ease;
   }
-
-
-
-
   .events_item .down-content span.author:hover {
     color: #5847c2;
   }
-
   .events_item .down-content h4 {
     font-size: 22px;
     font-weight: 600;
     transition: all .3s;
     margin-bottom: 15px;
   }
-
   .events_item:hover .down-content h4 {
     color: #7a6ad8;
   }
-
   .events_item:hover .thumb span.price {
     transform: scale(1.2) rotate(10deg);
   }
-
 
 /* 
 ---------------------------------------------
@@ -1855,6 +1810,34 @@ Testimonials Style
   opacity: 1;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
 }
+
+/* Comment text style */
+.read-more {
+display: inline-block;
+  font-size: 15px;
+  color: #7a6ad8;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all .3s;
+  position: relative;
+  padding-right: 25px;
+}
+
+.read-more:hover {
+  color: #5b4ac8;
+  padding-right: 30px;
+}
+
+.read-more:after {
+  content: "\f061";
+  font-family: FontAwesome;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: all .3s;
+}
+
 
 
 /* 
@@ -2812,23 +2795,30 @@ body {
 
 @media (max-width: 1200px) {
   .header-area .main-nav #search input {
-    width: 200px;
+    width: 100%;
+    max-width: 200px;
+    min-width: 150px;
+    transition: all 0.3s ease;
+    background-image: none;
   }
   .header-area .main-nav .nav li.has-sub:after {
     right: 15px;
+    transition: transform 0.3s ease;
   }
   .fun-facts:before {
     width: 95%;
+    transition: width 0.3s ease;
   }
   footer {
     margin-top: 60px;
     padding: 40px 0;
     background-color: #f8f9fa;
     border-top: 1px solid #eee;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
   }
 }
 /*Responsive Style Footer*/
-@media (max-width: 767px) {
+@media (max-width: 800px) {
   footer p a {
     display: inline-block;
     margin: 10px 0;

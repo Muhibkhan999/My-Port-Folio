@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comments Section</title>
+    <style>
+        .header {
+    background: linear-gradient(145deg, #4C51BF, #2C5282);
+    padding: 3rem;
+    text-align: center;
+    border-radius: 0 0 30px 30px;
+    margin-bottom: 3rem;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+}
+
+.header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(90deg, rgba(255,255,255,0.1), rgba(255,255,255,0.9), rgba(255,255,255,0.1));
+    animation: shimmer 3s infinite linear;
+}
+
+.header-title {
+    color: #ffffff;
+    font-size: 3rem;
+    font-weight: 800;
+    margin: 0;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    text-shadow: 3px 3px 8px rgba(0,0,0,0.3);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.header-title:hover {
+    transform: scale(1.05);
+    text-shadow: 4px 4px 12px rgba(0,0,0,0.4);
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 2rem;
+    }
+    
+    .header-title {
+        font-size: 2.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        padding: 1.5rem;
+    }
+    
+    .header-title {
+        font-size: 1.75rem;
+    }
+}.comments-container {
+    max-width: 1200px;
+    margin: 3rem auto;
+    padding: 40px;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    background: linear-gradient(145deg, #ffffff, #f0f4f8);
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden;
+    border: 2px solid #e2e8f0;
+}
+
+.comments-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #4C51BF, #2C5282);
+    border-radius: 10px;
+}
+.name-input {
+                    width: 100%;
+                    padding: 0.75rem 1rem;
+                    font-size: 1rem;
+                    border: 2px solid #e2e8f0;
+                    border-radius: 8px;
+                    background-color: #ffffff;
+                    color: #2d3748;
+                    transition: all 0.3s ease;
+                    margin-bottom: 1rem;
+                    font-family: inherit;
+                }
+        
+                .name-input:focus {
+                    outline: none;
+                    border-color: #4299e1;
+                    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.15);
+                }
+        
+                .name-input::placeholder {
+                    color: #a0aec0;
+                }
+        
+.comment {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 3rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(0,0,0,0.05);
+    position: relative;
+    cursor: pointer;
+}
+
+.comment:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
+}
+
+.comment-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+}
+
+.comment-avatar {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    margin-right: 1.8rem;
+    object-fit: cover;
+    border: 5px solid #ffffff;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.comment-avatar:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+}
+
+.comment-author {
+    font-weight: 800;
+    color: #2d3748;
+    margin: 0;
+    font-size: 1.4rem;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, #2d3748, #4C51BF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.comment-date {
+    color: #4A5568;
+    font-size: 1rem;
+    margin-left: auto;
+    font-weight: 600;
+    padding: 0.6rem 1rem;
+    background: #edf2f7;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.comment-date:hover {
+    background: #e2e8f0;
+    color: #2C5282;
+}
+
+.comment-content {
+    color: #4a5568;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
+    letter-spacing: -0.01em;
+    padding: 0.6rem 0;
+}
+
+.comment-actions {
+    display: flex;
+    gap: 2rem;
+    border-top: 3px solid #f7fafc;
+    padding-top: 1.5rem;
+    transition: padding-left 0.3s ease;
+}
+
+.comment-action {
+    background: none;
+    border: none;
+    color: #4299e1;
+    cursor: pointer;
+    font-size: 1.1rem;
+    padding: 0.8rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    border-radius: 12px;
+    transition: transform 0.3s ease, color 0.2s ease;
+    font-weight: 700;
+    position: relative;
+    overflow: hidden;
+}
+
+.comment-action::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(66, 153, 225, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.4s ease, height 0.4s ease;
+}
+
+.comment-action:hover::before {
+    width: 320px;
+    height: 320px;
+}
+
+.comment-action:hover {
+    color: #2C5282;
+    transform: translateY(-3px);
+}
+
+.comment-form {
+    margin-top: 4rem;
+    background: #ffffff;
+    padding: 3rem;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    position: relative;
+}
+
+.comment-input {
+    width: 100%;
+    padding: 1.8rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 14px;
+    margin-bottom: 2rem;
+    resize: vertical;
+    min-height: 150px;
+    font-family: inherit;
+    font-size: 1.2rem;
+    transition: all 0.4s ease;
+    background: #f8fafc;
+}
+
+.comment-input:focus {
+    outline: none;
+    border-color: #4C51BF;
+    box-shadow: 0 0 0 4px rgba(66, 153, 225, 0.2);
+    background: #ffffff;
+}
+
+.rating-input {
+    margin-bottom: 2.5rem;
+}
+
+.rating-input label {
+    display: block;
+    margin-bottom: 0.8rem;
+    font-weight: 700;
+    color: #4a5568;
+}
+
+.rating-input select {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.rating-input select:focus {
+    outline: none;
+    border-color: #4C51BF;
+    box-shadow: 0 0 0 4px rgba(66, 153, 225, 0.2);
+}
+
+.comment-submit {
+    background: linear-gradient(135deg, #4299e1, #2b6cb0);
+    color: white;
+    border: none;
+    padding: 1.5rem 3rem;
+    border-radius: 14px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1.2rem;
+    transition: all 0.4s ease-in-out;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+}
+
+.comment-submit::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s ease-in-out;
+}
+
+.comment-submit:hover::before {
+    left: 100%;
+}
+
+.comment-submit:hover {
+    background: linear-gradient(135deg, #2b6cb0, #1a365d);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(43, 108, 176, 0.3);
+}
+
+.comment-submit:active {
+    transform: translateY(-2px);
+}
+
+.replies {
+    margin-left: 5rem;
+    border-left: 4px solid #e2e8f0;
+    padding-left: 3rem;
+    transition: all 0.3s ease;
+}
+
+.replies:hover {
+    border-left-color: #4C51BF;
+    padding-left: 4rem;
+}
+  @media (max-width: 1024px) {
+      .comments-container {
+          padding: 30px;
+          max-width: 90%;
+          margin: 0 auto;
+      }
+
+      .comment {
+          padding: 2rem;
+          transition: transform 0.3s ease;
+      }
+
+      .comment:hover {
+          transform: translateX(5px);
+      }
+
+      .replies {
+          margin-left: 3rem;
+          padding-left: 2rem;
+          transition: all 0.3s ease-in-out;
+      }
+
+      .comment-avatar {
+          width: 60px;
+          height: 60px;
+          transition: transform 0.3s ease;
+      }
+
+      .comment-avatar:hover {
+          transform: scale(1.1);
+      }
+
+      .comment-action {
+          padding: 0.6rem 1.2rem;
+          font-size: 1rem;
+          transition: all 0.3s ease;
+      }
+
+      .comment-action:hover {
+          background-color: #4C51BF;
+          color: white;
+      }
+  }
+
+  @media (max-width: 768px) {
+      .comments-container {
+          padding: 20px;
+          max-width: 95%;
+      }
+
+      .comment-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.8rem;
+      }
+
+      .comment-avatar {
+          width: 50px;
+          height: 50px;
+          border: 2px solid #4C51BF;
+      }
+
+      .comment {
+          padding: 1.5rem;
+          box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+          border-radius: 12px;
+      }
+
+      .comment-actions {
+          padding-top: 1rem;
+          gap: 1.5rem;
+          flex-wrap: wrap;
+      }
+
+      .comment-submit {
+          padding: 1rem 2.5rem;
+          width: 100%;
+          margin-top: 1rem;
+      }
+  }
+
+  @media (max-width: 480px) {
+      .comments-container {
+          padding: 15px;
+          max-width: 100%;
+      }
+
+      .replies {
+          margin-left: 1.5rem;
+          padding-left: 1rem;
+      }
+
+      .comment-action {
+          padding: 0.5rem 1rem;
+          font-size: 0.9rem;
+      }
+  }
+    </style>
+</head>
+<!--Header section-->
+<header class="header">
+    <h1 class="header-title">
+Comments On Muhib's Port-Folio    </h1>
+    </button>
+</header>
+<div class="comments-container">
+    <div class="comment">
+        <div class="comment-header">
+            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde" alt="User Avatar" class="comment-avatar">
+            <h4 class="comment-author">John Doe</h4>
+            <span class="comment-date">2 hours ago</span>
+        </div>
+        <p class="comment-content">
+            Nice work on the website design. ⭐⭐⭐⭐
+        </p>
+        <div class="comment-actions">
+            <button class="comment-action">
+                <i class="fas fa-reply"></i> Reply
+            </button>
+            <button class="comment-action">
+                <i class="fas fa-heart"></i> Like
+            </button>
+        </div>
+            
+        <div class="replies">
+            <div class="comment">
+                <div class="comment-header">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330" alt="User Avatar" class="comment-avatar">
+                    <h4 class="comment-author">Jane Smith</h4>
+                    <span class="comment-date">1 hour ago</span>
+                </div>
+                <p class="comment-content">
+                    Good job on the details. ⭐⭐⭐
+                </p>
+                <div class="comment-actions">
+                    <button class="comment-action">
+                        <i class="fas fa-reply"></i> Reply
+                    </button>
+                    <button class="comment-action">
+                        <i class="fas fa-heart"></i> Like
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="comment">
+        <div class="comment-header">
+            <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36" alt="User Avatar" class="comment-avatar">
+            <h4 class="comment-author">Michael Johnson</h4>
+            <span class="comment-date">3 hours ago</span>
+        </div>
+        <p class="comment-content">
+            The website works well. Good development work. ⭐⭐⭐
+        </p>
+        <div class="comment-actions">
+            <button class="comment-action">
+                <i class="fas fa-reply"></i> Reply
+            </button>
+            <button class="comment-action">
+                <i class="fas fa-heart"></i> Like
+            </button>
+        </div>
+    </div>
+
+    <div class="comment">
+        <div class="comment-header">
+            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956" alt="User Avatar" class="comment-avatar">
+            <h4 class="comment-author">Sarah Williams</h4>
+            <span class="comment-date">5 hours ago</span>
+        </div>
+        <p class="comment-content">
+            Nice user experience. The site is easy to navigate. ⭐⭐⭐⭐
+        </p>
+        <div class="comment-actions">
+            <button class="comment-action">
+                <i class="fas fa-reply"></i> Reply
+            </button>
+            <button class="comment-action">
+                <i class="fas fa-heart"></i> Like
+            </button>
+        </div>
+            
+        <div class="replies">
+            <div class="comment">
+                <div class="comment-header">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d" alt="User Avatar" class="comment-avatar">
+                    <h4 class="comment-author">David Brown</h4>
+                    <span class="comment-date">4 hours ago</span>
+                </div>
+                <p class="comment-content">
+                    Agreed, the website is well put together. ⭐⭐⭐
+                </p>
+                <div class="comment-actions">
+                    <button class="comment-action">
+                        <i class="fas fa-reply"></i> Reply
+                    </button>
+                    <button class="comment-action">
+                        <i class="fas fa-heart"></i> Like
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <form class="comment-form" onsubmit="event.preventDefault(); addNewComment();">
+        <input type="text" class="name-input" placeholder="Your name..." required>
+        <textarea class="comment-input" placeholder="Write your comment about M.MuhibKhan's work..."></textarea>
+        <div class="rating-input">
+            <label>Rate with stars:</label>
+            <select name="rating" required>
+                <option value="">Select rating</option>
+                <option value="1">⭐ 1 Star</option>
+                <option value="2">⭐⭐ 2 Stars</option>
+                <option value="3">⭐⭐⭐ 3 Stars</option>
+                <option value="4">⭐⭐⭐⭐ 4 Stars</option>
+                <option value="5">⭐⭐⭐⭐⭐ 5 Stars</option>
+            </select>
+        </div>
+        <button type="submit" class="comment-submit">Post Comment</button>
+    </form>
+    <script>
+        function addNewComment() {
+            const userName = document.querySelector('.name-input').value;
+            const commentText = document.querySelector('.comment-input').value;
+            const rating = document.querySelector('select[name="rating"]').value;
+            const stars = '⭐'.repeat(parseInt(rating));
+            
+            const randomImages = [
+                'https://images.unsplash.com/photo-1633332755192-727a05c4013d',
+                'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d',
+                'https://images.unsplash.com/photo-1494790108377-be9c29b29330',
+                'https://images.unsplash.com/photo-1500648767791-00dcc994a43e',
+                'https://images.unsplash.com/photo-1534528741775-53994a69daeb',
+                'https://images.unsplash.com/photo-1438761681033-6461ffad8d80',
+                'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e',
+                'https://images.unsplash.com/photo-1544005313-94ddf0286df2',
+                'https://images.unsplash.com/photo-1547425260-76bcadfb4f2c',
+                'https://images.unsplash.com/photo-1554151228-14d9def656e4',
+                'https://images.unsplash.com/photo-1499952127939-9bbf5af6c51c',
+                'https://images.unsplash.com/photo-1517841905240-472988babdf9'
+            ];            
+            const randomImage = randomImages[Math.floor(Math.random() * randomImages.length)];
+            
+            const newComment = document.createElement('div');
+            newComment.className = 'comment';
+            newComment.innerHTML = `
+                <div class="comment-header">
+                    <img src="${randomImage}" alt="User Avatar" class="comment-avatar">
+                    <h4 class="comment-author">${userName}</h4>
+                    <span class="comment-date">Just now</span>
+                </div>
+                <p class="comment-content">
+                    ${commentText} ${stars}
+                </p>
+                <div class="comment-actions">
+                    <button class="comment-action">
+                        <i class="fas fa-reply"></i> Reply
+                    </button>
+                    <button class="comment-action">
+                        <i class="fas fa-heart"></i> Like
+                    </button>
+                </div>
+            `;
+            
+            const comments = document.querySelectorAll('.comment');
+            const lastComment = comments[comments.length - 1];
+            lastComment.after(newComment);
+            document.querySelector('.comment-form').reset();
+        }
+    </script>
+</div>
+
+<script src="https://kit.fontawesome.com/your-kit-code.js" crossorigin="anonymous"></script>
+
+</body>
+</html>
