@@ -349,104 +349,159 @@
     border-left-color: #4C51BF;
     padding-left: 4rem;
 }
+/* Media Queries */
+    
   @media (max-width: 1024px) {
       .comments-container {
-          padding: 30px;
-          max-width: 90%;
+          padding: 35px;
+          max-width: 85%;
           margin: 0 auto;
+          transition: all 0.3s ease;
       }
 
       .comment {
-          padding: 2rem;
-          transition: transform 0.3s ease;
+          padding: 2.5rem;
+          transition: all 0.3s ease;
+          border-radius: 15px;
       }
 
       .comment:hover {
-          transform: translateX(5px);
+          transform: translateX(8px);
+          box-shadow: 0 5px 15px rgba(76, 81, 191, 0.15);
       }
 
       .replies {
-          margin-left: 3rem;
-          padding-left: 2rem;
+          margin-left: 3.5rem;
+          padding-left: 2.5rem;
           transition: all 0.3s ease-in-out;
       }
 
       .comment-avatar {
-          width: 60px;
-          height: 60px;
-          transition: transform 0.3s ease;
+          width: 65px;
+          height: 65px;
+          transition: all 0.3s ease;
+          border: 3px solid transparent;
       }
 
       .comment-avatar:hover {
-          transform: scale(1.1);
+          transform: scale(1.15);
+          border-color: #4C51BF;
       }
 
       .comment-action {
-          padding: 0.6rem 1.2rem;
-          font-size: 1rem;
+          padding: 0.8rem 1.4rem;
+          font-size: 1.1rem;
           transition: all 0.3s ease;
+          border-radius: 8px;
       }
 
       .comment-action:hover {
           background-color: #4C51BF;
           color: white;
+          transform: translateY(-2px);
       }
   }
 
   @media (max-width: 768px) {
       .comments-container {
-          padding: 20px;
-          max-width: 95%;
+          padding: 25px;
+          max-width: 92%;
+          transition: all 0.3s ease;
       }
 
       .comment-header {
           flex-direction: column;
           align-items: flex-start;
-          gap: 0.8rem;
+          gap: 1rem;
       }
 
       .comment-avatar {
-          width: 50px;
-          height: 50px;
-          border: 2px solid #4C51BF;
+          width: 55px;
+          height: 55px;
+          border: 2.5px solid #4C51BF;
+          transition: all 0.3s ease;
       }
 
       .comment {
-          padding: 1.5rem;
-          box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-          border-radius: 12px;
+          padding: 1.8rem;
+          box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+          border-radius: 14px;
+          transition: all 0.3s ease;
+      }
+
+      .comment:hover {
+          transform: translateY(-3px);
       }
 
       .comment-actions {
-          padding-top: 1rem;
-          gap: 1.5rem;
+          padding-top: 1.2rem;
+          gap: 1.8rem;
           flex-wrap: wrap;
+          transition: all 0.3s ease;
       }
 
       .comment-submit {
-          padding: 1rem 2.5rem;
+          padding: 1.2rem 2.8rem;
           width: 100%;
-          margin-top: 1rem;
+          margin-top: 1.2rem;
+          transition: all 0.3s ease;
       }
   }
 
   @media (max-width: 480px) {
       .comments-container {
-          padding: 15px;
-          max-width: 100%;
+          padding: 18px;
+          max-width: 98%;
+          transition: all 0.3s ease;
       }
 
       .replies {
-          margin-left: 1.5rem;
-          padding-left: 1rem;
+          margin-left: 1.8rem;
+          padding-left: 1.2rem;
+          transition: all 0.3s ease;
+      }
+
+      .comment-action {
+          padding: 0.6rem 1.2rem;
+          font-size: 0.95rem;
+          width: 100%;
+          justify-content: center;
+      }
+
+      .comment {
+          padding: 1.5rem;
+          margin-bottom: 1.2rem;
+      }
+
+      .comment-header {
+          gap: 0.9rem;
+      }
+
+      .comment-avatar {
+          width: 45px;
+          height: 45px;
+      }
+  }
+
+  @media (max-width: 320px) {
+      .comments-container {
+          padding: 12px;
+      }
+
+      .comment {
+          padding: 1.2rem;
+      }
+
+      .replies {
+          margin-left: 1.2rem;
+          padding-left: 0.8rem;
       }
 
       .comment-action {
           padding: 0.5rem 1rem;
           font-size: 0.9rem;
       }
-  }
-    </style>
+  }    </style>
 </head>
 <!--Header section-->
 <header class="header">

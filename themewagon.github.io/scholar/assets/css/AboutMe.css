@@ -486,6 +486,13 @@ footer:hover p {
     .h1 {
         flex-wrap: wrap;
         margin-left: 0;
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        line-height: 1.2;
+        text-align: center;
+        font-weight: 700;
+        color: #333;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
     }
 }
 
@@ -532,7 +539,13 @@ footer:hover p {
         background-position: 0% 100%;
     }
 }
-
+@media screen and (max-width: 545px) {
+    .h1 {
+        font-size: 2.5rem;
+        margin-left: -650px;
+    }
+    
+}
 /* Gradient Background Enhancement */
 .gradient-background {
     background: linear-gradient(135deg, #6e7f80, #8c9a9e);

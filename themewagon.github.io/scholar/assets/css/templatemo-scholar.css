@@ -2839,13 +2839,10 @@ body {
     .fun-facts:before {
       width: 95%;
       transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-      background: linear-gradient(45deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.1) 100%);
     }
     footer {
       margin-top: 60px;
       padding: 60px 0;
-      background: linear-gradient(to bottom, #f8f9fa, #fff);
-      border-top: 1px solid rgba(238, 238, 238, 0.8);
       box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
       position: relative;
       overflow: hidden;
