@@ -1,6 +1,64 @@
-<!-- Thanks for using HTTrack Website Copier! -->
-<p style="font-family: Arial, sans-serif; font-size: 16px; color: #333; text-align: center; margin: 20px 0;">
-    If you are not redirected automatically, please click 
-    <a href="themewagon.github.io/scholar/index.html" style="color: #007bff; text-decoration: none; padding: 5px 10px; border-radius: 4px; transition: all 0.3s ease;">here</a>.
-</p>
-<meta HTTP-EQUIV="Refresh" CONTENT="0; URL=themewagon.github.io/scholar/index.html" style="display: none;">
+<!-- Automatic Redirect with Enhanced User Experience -->
+<div id="redirectContainer" style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 800px; margin: 50px auto; padding: 30px; background: linear-gradient(145deg, #ffffff, #f8f9fa); border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+    <div id="loadingSpinner" style="text-align: center; margin-bottom: 20px;">
+        <div style="border: 4px solid #f3f3f3; border-top: 4px solid #0056b3; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 0 auto;"></div>
+    </div>
+    <p style="font-size: 20px; color: #2c3e50; text-align: center; line-height: 1.8; margin: 20px 0;">
+        You will be redirected automatically in <span id="countdown" style="font-weight: bold; color: #0056b3;">3</span> seconds. If not, please 
+        <a href="themewagon.github.io/scholar/index.html" 
+           style="color: #0056b3; text-decoration: none; background: linear-gradient(145deg, #e7f5ff, #d0e8ff); padding: 10px 20px; border-radius: 8px; font-weight: 500; display: inline-block; margin: 0 5px; transition: all 0.3s ease; border: 1px solid #0056b3; box-shadow: 0 2px 5px rgba(0,86,179,0.2);"
+           onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 8px rgba(0,86,179,0.3)'"
+           onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 5px rgba(0,86,179,0.2)'">
+           click here
+        </a>
+    </p>
+</div>
+
+<style>
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#redirectContainer {
+    animation: fadeIn 0.5s ease-out;
+}
+</style>
+
+<meta HTTP-EQUIV="Refresh" CONTENT="3; URL=themewagon.github.io/scholar/index.html">
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let countdown = 3;
+        const countdownElement = document.getElementById('countdown');
+        
+        const updateCountdown = () => {
+            countdownElement.textContent = countdown;
+            if (countdown > 0) {
+                countdown--;
+                setTimeout(updateCountdown, 1000);
+            }
+        };
+        
+        updateCountdown();
+        
+        // Fallback redirect after animation
+        setTimeout(function() {
+            try {
+                window.location.href = "themewagon.github.io/scholar/index.html";
+            } catch(e) {
+                console.error("Redirect failed:", e);
+                // Show error message if redirect fails
+                document.getElementById('redirectContainer').innerHTML += `
+                    <p style="color: #dc3545; text-align: center; margin-top: 15px;">
+                        Redirect failed. Please use the click here link above.
+                    </p>`;
+            }
+        }, 3000);
+    });
+</script>
